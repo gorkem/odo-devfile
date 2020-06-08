@@ -1,0 +1,20 @@
+schemaVersion: 2.0.0
+
+components:
+  - container:
+      image: quay.io/gercan/busybox-html
+      name: web
+      mountSources: true
+      endpoints:
+        - name: web
+          targetPort: 8000
+          configuration:
+              discoverable: true
+commands:
+  - exec:
+      commandLine: "./main.sh"
+      id: web-run
+      workingDir: ${PROJECT_ROOT}
+      component: web
+      group:
+        kind: run

@@ -1,0 +1,27 @@
+schemaVersion: 2.0.0
+components:
+  - container:
+      image: quay.io/eclipse/che-golang-1.12:nightly
+      name: go-web
+      mountSources: true
+      endpoints:
+        - name: web
+          targetPort: 8000
+          configuration:
+              discoverable: true
+
+commands:
+  - exec:
+      commandLine: go install ./
+      id: go-build
+      component: go-web
+      workingDir: "/projects"
+      group:
+        kind: build
+  - exec:
+      commandLine: go-example
+      id: go-run
+      workingDir: "/projects"
+      component: go-web
+      group:
+        kind: run
