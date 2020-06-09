@@ -1,0 +1,26 @@
+schemaVersion: 2.0.0
+components:
+  - container:
+      image: quay.io/eclipse/che-dotnet-2.2:nightly
+      name: dotnet-web
+      mountSources: true
+      endpoints:
+        - name: web
+          targetPort: 5000
+          configuration:
+              discoverable: true
+commands:
+  - exec:
+      commandLine: dotnet build
+      id: dotnet-build
+      workingDir: /projects
+      component: dotnet-web
+      group:
+        kind: build
+  - exec:
+      commandLine: dotnet run
+      id: dotnet-run
+      workingDir: /projects
+      component: dotnet-web
+      group:
+        kind: run

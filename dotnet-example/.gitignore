@@ -1,0 +1,4 @@
+obj/
+bin/
+
+.odo/odo-file-index.json
