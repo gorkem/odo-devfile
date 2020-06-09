@@ -1,0 +1,24 @@
+schemaVersion: 2.0.0
+components:
+  - container:
+      image: quay.io/eclipse/che-java11-gradle:nightly
+      name: boot-web
+      mountSources: true
+      endpoints:
+        - name: web
+          targetPort: 8000
+          configuration:
+              discoverable: true
+commands:
+  - exec:
+      commandLine:  ./gradlew --no-daemon bootJar
+      id: boot-build
+      component: boot-web
+      group:
+        kind: build
+  - exec:
+      commandLine:  ./gradlew bootRun
+      id: boot-run
+      component: boot-web
+      group:
+        kind: run

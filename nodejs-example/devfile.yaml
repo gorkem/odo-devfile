@@ -1,0 +1,27 @@
+schemaVersion: 2.0.0
+components:
+  - container:
+      image: quay.io/eclipse/che-nodejs10-community:nightly
+      name: node-web
+      mountSources: true
+      endpoints:
+        - name: web
+          targetPort: 8000
+          configuration:
+            discoverable: true
+
+commands:
+  - exec:
+      commandLine:  "node /projects/index.js"
+      id: node-run
+      component: node-web
+      group:
+        kind: run
+  - exec:
+      commandLine: "yarn install"
+      id: node-build
+      component: node-web
+      group:
+        kind: build
+
+
