@@ -14,7 +14,9 @@ commands:
   - exec:
       commandLine: "./main.sh"
       id: web-run
-      workingDir: ${PROJECT_ROOT}
+      workingDir: /projects
       component: web
       group:
         kind: run
+      attributes:
+        restart: "false"
