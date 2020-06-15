@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: example-html
-        image: example-html-image
+        image: quay.io/gercan/busybox-html
         ports:
         - containerPort: 8000
