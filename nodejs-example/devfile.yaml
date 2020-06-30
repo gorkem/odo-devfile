@@ -7,14 +7,13 @@ components:
       endpoints:
         - name: web
           targetPort: 8000
-          configuration:
-            discoverable: true
-
 commands:
   - exec:
       commandLine:  "node /projects/index.js"
       id: node-run
       component: node-web
+      attributes:
+        restart: "false"
       group:
         kind: run
   - exec:
@@ -23,5 +22,11 @@ commands:
       component: node-web
       group:
         kind: build
+  - exec:
+      commandLine:  "node --inspect=5858 /projects/index.js"
+      id: node-debug
+      component: node-web
+      group:
+        kind: debug
 
 
