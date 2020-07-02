@@ -7,8 +7,6 @@ components:
       endpoints:
         - name: web
           targetPort: 8000
-          configuration:
-              discoverable: true
 commands:
   - exec:
       commandLine: pip install --user -r requirements.txt
@@ -23,3 +21,10 @@ commands:
       component: py-web
       group:
         kind: run
+  - exec:
+      commandLine: "pip install --user debugpy && python -m debugpy --listen 0.0.0.0:5858 /projects/app.py"
+      id: py-debug
+      workingDir: /projects
+      component: py-web
+      group:
+        kind: debug
