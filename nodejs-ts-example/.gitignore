@@ -1,0 +1,4 @@
+.odo/odo-file-index.json
+node_modules/
+.odo/env
+index.js*

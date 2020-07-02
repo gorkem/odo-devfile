@@ -1,0 +1,18 @@
+{
+  "name": "tilt-example-nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "immutable": "^3.8.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "typescript": "3.9.6"
+  },
+  "scripts": {
+    "build": "yarn install & yarn compile",
+    "compile": "yarn run tsc"
+  }
+}
